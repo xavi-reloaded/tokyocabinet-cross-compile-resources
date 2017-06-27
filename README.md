@@ -5,17 +5,17 @@ This project aims to collect resources to compile and use TokioCabinet in any sy
 
 
 *  ***Tokyo Products***
--
+
 
 Tokyo Resources to compile in Visual Studio.
 
 *  ***Tokyo Cygwin***
--
+
 
 Code available to compile with cygwin.
 
 *  ***Tokyo MinGW***
--
+
 Tokyo cross-compiler MinGW implementation 
 
 
