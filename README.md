@@ -26,7 +26,7 @@ Other resources
 General
 -------
 
-[Related Post][http://spench.net/drupal/software/tokyocabinet]
+[Related Post](http://spench.net/drupal/software/tokyocabinet)
 [MinGW Tutorial][https://fedoraproject.org/wiki/MinGW/Tutorial]
 [Setup MinGW][http://ascend4.org/Setting_up_a_MinGW-w64_build_environment]
 [Background MinGW][https://mingwpy.github.io/background-mingw.html]
