@@ -1,0 +1,3 @@
+zlib
+bz2
+TCUSEPTHREAD

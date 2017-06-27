@@ -1,0 +1,86 @@
+/*************************************************************************************************
+ * IDL for bindings of scripting languages
+ *                                                      Copyright (C) 2006-2009 Mikio Hirabayashi
+ * This file is part of Tokyo Tyrant.
+ * Tokyo Tyrant is free software; you can redistribute it and/or modify it under the terms of
+ * the GNU Lesser General Public License as published by the Free Software Foundation; either
+ * version 2.1 of the License or any later version.  Tokyo Tyrant is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+ * License for more details.
+ * You should have received a copy of the GNU Lesser General Public License along with Tokyo
+ * Tyrant; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307 USA.
+ *************************************************************************************************/
+
+
+/**
+ * namespace of Tokyo Tyrant
+ */
+module TokyoTyrant {
+  //----------------------------------------------------------------
+  // list of strings (substituted for by the native mechanism)
+  //----------------------------------------------------------------
+  interface List {
+    string get(in long index);
+  };
+  //----------------------------------------------------------------
+  // map of strings (substituted for by the native mechanism)
+  //----------------------------------------------------------------
+  interface Map {
+    string get(in string key);
+  };
+  //----------------------------------------------------------------
+  // the error codes
+  //----------------------------------------------------------------
+  interface ECODE {
+    const long ESUCCESS = 0;
+    const long EINVALID = 1;
+    const long ENOHOST = 2;
+    const long EREFUSED = 3;
+    const long ESEND = 4;
+    const long ERECV = 5;
+    const long EKEEP = 6;
+    const long ENOREC = 7;
+    const long EMISC = 9999;
+    long ecode();
+    string errmsg(in long ecode);
+  };
+  //----------------------------------------------------------------
+  // the remove database API
+  //----------------------------------------------------------------
+  interface RDB :ECODE {
+    const long XOLCKREC = 1 << 0;
+    const long XOLCKGLB = 1 << 1;
+    const long MONOULOG = 1 << 0;
+    boolean open(in string host, in long port);
+    boolean close();
+    boolean put(in string key, in string value);
+    boolean putkeep(in string key, in string value);
+    boolean putcat(in string key, in string value);
+    boolean putshl(in string key, in string value, in long width);
+    boolean putnr(in string key, in string value);
+    boolean _out(in string key);
+    string get(in string key);
+    long mget(inout Map recs);
+    long vsiz(in string key);
+    boolean iterinit();
+    string iternext();
+    List fwmkeys(in string prefix, in long max);
+    long addint(in string key, in long num);
+    double adddouble(in string key, in double num);
+    string ext(in string name, in string key, in string value, in long opts);
+    boolean sync();
+    boolean optimize(in string params);
+    boolean vanish();
+    boolean copy(in string path);
+    long long rnum();
+    long long size();
+    string stat();
+    List misc(in string name, in List args, in long opts);
+  };
+};
+
+
+
+/* END OF FILE */
